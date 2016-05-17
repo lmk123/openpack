@@ -1,5 +1,9 @@
 # openpack
 
+[![dependencies Status](https://img.shields.io/david/lmk123/openpack.svg?style=flat-square)](https://david-dm.org/lmk123/openpack)
+[![devDependencies Status](https://img.shields.io/david/dev/lmk123/openpack.svg?style=flat-square)](https://david-dm.org/lmk123/openpack#info=devDependencies)
+[![NPM Version](https://img.shields.io/npm/v/openpack.svg?style=flat-square)](https://www.npmjs.com/package/openpack)
+
 当 Webpack 编译完之后打开一个浏览器标签页。
 
 它的功能类似于 [open-browser-webpack-plugin](https://www.npmjs.com/package/open-browser-webpack-plugin),但它的默认 URL 是根据 webpack-dev-server 的配置决定的。
@@ -39,11 +43,11 @@ module.exports = {
 var OpenPackPlugin = require('openpack');
 module.exports = {
   devServer:{
-    host:'0.0.0.0',
+    host:'localhost',
     port:12345
   },
   plugins:[
-    // 会打开 http://0.0.0.0:12345
+    // 会打开 http://localhost:12345
     new OpenPackPlugin()
   ]
 };
@@ -57,7 +61,7 @@ module.exports = {
 var OpenPackPlugin = require('openpack');
 module.exports = {
   devServer:{
-    host:'0.0.0.0',
+    host:'0.0.0.0', // 使用此方法时一定要将 host 设为 0.0.0.0
     port:12345
   },
   plugins:[

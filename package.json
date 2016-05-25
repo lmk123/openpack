@@ -1,7 +1,7 @@
 {
   "name": "openpack",
-  "version": "0.0.2",
-  "description": "Opens a browser tab when Webpack loads.",
+  "version": "1.0.0",
+  "description": "Opens the browser when Webpack is ready serving your files.",
   "main": "index.js",
   "dependencies": {
     "open": "^0.0.5"

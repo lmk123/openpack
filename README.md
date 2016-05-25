@@ -1,78 +1,89 @@
-# openpack
+# OpenPack
 
 [![dependencies Status](https://img.shields.io/david/lmk123/openpack.svg?style=flat-square)](https://david-dm.org/lmk123/openpack)
 [![devDependencies Status](https://img.shields.io/david/dev/lmk123/openpack.svg?style=flat-square)](https://david-dm.org/lmk123/openpack#info=devDependencies)
 [![NPM Version](https://img.shields.io/npm/v/openpack.svg?style=flat-square)](https://www.npmjs.com/package/openpack)
 
-当 Webpack 编译完之后打开一个浏览器标签页。
+Opens a new browser tab when [Webpack](http://webpack.github.io/) loads.
 
-它的功能类似于 [open-browser-webpack-plugin](https://www.npmjs.com/package/open-browser-webpack-plugin),但它的默认 URL 是根据 webpack-dev-server 的配置决定的。
+OpenPack is similar to [open-browser-webpack-plugin](https://www.npmjs.com/package/open-browser-webpack-plugin) but with more options and very friendly to use with [webpack-dev-server](http://webpack.github.io/docs/webpack-dev-server.html).
 
-## 使用示例
+## Usage
 
-### 打开指定 url
-
-```js
-var OpenPackPlugin = require('openpack');
-module.exports = {
-  plugins:[
-    // 会打开 http://localhost:8080
-    new OpenPackPlugin('http://localhost:8080')
-  ]
-};
-```
-
-### 指定浏览器
+All options are optional.
 
 ```js
 var OpenPackPlugin = require('openpack');
 module.exports = {
+  // webpack-dev-server's options
+  devServer:{
+    host: '0.0.0.0',
+    port: '12345',
+    https: true
+  },
   plugins:[
-    // 使用火狐浏览器打开 http://localhost:8080
     new OpenPackPlugin({
-      url:'http://localhost:8080',
-      browser:'firefox'
+      browser:'chrome', // which browser you want to open URL.
+
+      url:'https://www.google.com', // which URL you want open.Set this will ignores or below options.
+
+      host: 'localhost', // the host of URL. Default is `devServer.host` or 'localhost'
+      lan: true, // if set to true, then host will be a LAN IP address instead, so that other devices in the same LAN can access your server. Note: you must set devServer's host to '0.0.0.0' to enable this feture.
+      port: '8080', // the port of URL. Default is `devServer.port` or '8080',
+      path: '/index.html?query=string#hash' // the full path or URL. Default is '/'
     })
   ]
 };
 ```
 
-### 打开 devServer 的 url
+## Example
+
+### Open the devServer URL.
 
 ```js
 var OpenPackPlugin = require('openpack');
 module.exports = {
   devServer:{
-    host:'localhost',
-    port:12345
+    host: '127.0.0.1',
+    port: '12345',
+    https: true
   },
   plugins:[
-    // 会打开 http://localhost:12345
+    // will open 'https://127.0.0.1:12345/'
     new OpenPackPlugin()
   ]
 };
 ```
 
-### 以局域网 IP 地址作为 host 打开 url
-
-这样能方便同一局域网的其它设备(例如手机)访问你本机上的 webpack server。
+### Open devServer URL with LAN IP address
 
 ```js
 var OpenPackPlugin = require('openpack');
 module.exports = {
   devServer:{
-    host:'0.0.0.0', // 使用此方法时一定要将 host 设为 0.0.0.0
-    port:12345
+    host: '0.0.0.0'
   },
   plugins:[
-    // 假设你的局域网地址是 172.16.27.75,则会打开 http://172.16.27.75:8080
+    // if your LAN IP address is '172.16.27.83', then will open 'http://172.16.27.83:8080/'
     new OpenPackPlugin({
-      lan:true
+      lan: true
     })
   ]
 };
 ```
 
-## 许可
+### Open a URL you want
+
+```js
+var OpenPackPlugin = require('openpack');
+module.exports = {
+  plugins:[
+    // will open 'https://www.google.com/'
+    new OpenPackPlugin('https://www.google.com/')
+  ]
+};
+```
+
+## License
 
 MIT

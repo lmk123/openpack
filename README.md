@@ -25,12 +25,12 @@ module.exports = {
     new OpenPackPlugin({
       browser:'chrome', // which browser you want to open URL.
 
-      url:'https://www.google.com', // which URL you want open.Set this will ignores or below options.
+      url:'https://www.google.com', // which URL you want open.Set this will ignores all below options.
 
       host: 'localhost', // the host of URL. Default is `devServer.host` or 'localhost'
       lan: true, // if set to true, then host will be a LAN IP address instead, so that other devices in the same LAN can access your server. Note: you must set devServer's host to '0.0.0.0' to enable this feture.
       port: '8080', // the port of URL. Default is `devServer.port` or '8080',
-      path: '/index.html?query=string#hash' // the full path or URL. Default is '/'
+      path: '/index.html?query=string#hash' // the full path of URL. Default is '/'
     })
   ]
 };

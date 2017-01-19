@@ -15,7 +15,7 @@
   "author": "Mingkai Li <milk.lee@qq.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lmk123/openpack.js.git"
+    "url": "git+https://github.com/lmk123/openpack.git"
   },
   "bugs": {
     "url": "https://github.com/lmk123/openpack/issues"

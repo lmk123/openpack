@@ -13,24 +13,24 @@ OpenPack is similar to [open-browser-webpack-plugin](https://www.npmjs.com/packa
 All options are optional.
 
 ```js
-var OpenPackPlugin = require('openpack');
+var OpenPackPlugin = require("openpack");
 module.exports = {
   // webpack-dev-server's options
-  devServer:{
-    host: '0.0.0.0',
-    port: '12345',
+  devServer: {
+    host: "0.0.0.0",
+    port: "12345",
     https: true
   },
-  plugins:[
+  plugins: [
     new OpenPackPlugin({
-      browser:'chrome', // which browser you want to open URL.
+      browser: "chrome", // which browser you want to open URL.
 
-      url:'https://www.google.com', // which URL you want open.Set this will ignores all below options.
+      url: "https://www.google.com", // which URL you want open.Set this will ignores all below options.
 
-      host: 'localhost', // the host of URL. Default is `devServer.host` or 'localhost'
+      host: "localhost", // the host of URL. Default is `devServer.host` or 'localhost'
       lan: true, // if set to true, then host will be a LAN IP address instead, so that other devices in the same LAN can access your server. Note: you must set devServer's host to '0.0.0.0' to enable this feture.
-      port: '8080', // the port of URL. Default is `devServer.port` or '8080',
-      path: '/index.html?query=string#hash' // the full path of URL. Default is '/'
+      port: "8080", // the port of URL. Default is `devServer.port` or '8080',
+      path: "/index.html?query=string#hash" // the full path of URL. Default is '/'
     })
   ]
 };
@@ -41,14 +41,14 @@ module.exports = {
 ### Open the devServer URL.
 
 ```js
-var OpenPackPlugin = require('openpack');
+var OpenPackPlugin = require("openpack");
 module.exports = {
-  devServer:{
-    host: '127.0.0.1',
-    port: '12345',
+  devServer: {
+    host: "127.0.0.1",
+    port: "12345",
     https: true
   },
-  plugins:[
+  plugins: [
     // will open 'https://127.0.0.1:12345/'
     new OpenPackPlugin()
   ]
@@ -58,12 +58,12 @@ module.exports = {
 ### Open devServer URL with LAN IP address
 
 ```js
-var OpenPackPlugin = require('openpack');
+var OpenPackPlugin = require("openpack");
 module.exports = {
-  devServer:{
-    host: '0.0.0.0'
+  devServer: {
+    host: "0.0.0.0"
   },
-  plugins:[
+  plugins: [
     // if your LAN IP address is '172.16.27.83', then will open 'http://172.16.27.83:8080/'
     new OpenPackPlugin({
       lan: true
@@ -75,11 +75,11 @@ module.exports = {
 ### Open a URL you want
 
 ```js
-var OpenPackPlugin = require('openpack');
+var OpenPackPlugin = require("openpack");
 module.exports = {
-  plugins:[
+  plugins: [
     // will open 'https://www.google.com/'
-    new OpenPackPlugin('https://www.google.com/')
+    new OpenPackPlugin("https://www.google.com/")
   ]
 };
 ```
